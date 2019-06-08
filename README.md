@@ -1,4 +1,4 @@
-# ig-trader
+# fix-client
 Minimalist Node.js client for using FIX API
 
 # Installation
