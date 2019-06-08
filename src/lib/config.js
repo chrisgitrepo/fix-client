@@ -1,0 +1,144 @@
+const forexSymbols = [{
+  symbol: 'GBP/USD',
+  fixSymbolID: '2'
+}, {
+  symbol: 'USD/JPY',
+  fixSymbolID: '4'
+}, {
+  symbol: 'EUR/CHF',
+  fixSymbolID: '10'
+}, {
+  symbol: 'EUR/GBP',
+  fixSymbolID: '9'
+}, {
+  symbol: 'EUR/JPY',
+  fixSymbolID: '3'
+}, {
+  symbol: 'EUR/USD',
+  fixSymbolID: '1'
+}, {
+  symbol: 'GBP/JPY',
+  fixSymbolID: '7'
+}, {
+  symbol: 'USD/CHF',
+  fixSymbolID: '6'
+}, {
+  symbol: 'AUD/JPY',
+  fixSymbolID: '11'
+}, {
+  symbol: 'AUD/USD',
+  fixSymbolID: '5'
+}, {
+  symbol: 'CHF/JPY',
+  fixSymbolID: '13'
+}, {
+  symbol: 'USD/CAD',
+  fixSymbolID: '8'
+}, {
+  symbol: 'EUR/AUD',
+  fixSymbolID: '14'
+}, {
+  symbol: 'GBP/AUD',
+  fixSymbolID: '16'
+}, {
+  symbol: 'GBP/CHF',
+  fixSymbolID: '40'
+}, {
+  symbol: 'CAD/JPY',
+  fixSymbolID: '15'
+}, {
+  symbol: 'EUR/CAD',
+  fixSymbolID: '17'
+}, {
+  symbol: 'GBP/CAD',
+  fixSymbolID: '19'
+}, {
+  symbol: 'AUD/CAD',
+  fixSymbolID: '18'
+}, {
+  symbol: 'EUR/NZD',
+  fixSymbolID: '26'
+}, {
+  symbol: 'AUD/NZD',
+  fixSymbolID: '20'
+}, {
+  symbol: 'NZD/USD',
+  fixSymbolID: '12'
+}, {
+  symbol: 'NZD/JPY',
+  fixSymbolID: '21'
+}, {
+  symbol: 'AUD/CHF',
+  fixSymbolID: '23'
+}, {
+  symbol: 'CAD/CHF',
+  fixSymbolID: '27'
+}, {
+  symbol: 'USD/SGD',
+  fixSymbolID: '28'
+}, {
+  symbol: 'AUD/SGD',
+  fixSymbolID: '1017'
+}, {
+  symbol: 'NZD/CAD',
+  fixSymbolID: '30'
+}, {
+  symbol: 'GBP/SGD',
+  fixSymbolID: '32'
+}, {
+  symbol: 'GBP/NZD',
+  fixSymbolID: '25'
+}, {
+  symbol: 'USD/HUF',
+  fixSymbolID: '1015'
+}, {
+  symbol: 'EUR/PLN',
+  fixSymbolID: '1009'
+}, {
+  symbol: 'USD/PLN',
+  fixSymbolID: '35'
+}, {
+  symbol: 'EUR/NOK',
+  fixSymbolID: '33'
+}, {
+  symbol: 'USD/NOK',
+  fixSymbolID: '22'
+}, {
+  symbol: 'USD/SEK',
+  fixSymbolID: '29'
+}, {
+  symbol: 'USD/CZK',
+  fixSymbolID: '1016'
+}, {
+  symbol: 'EUR/SEK',
+  fixSymbolID: '31'
+}, {
+  symbol: 'USD/TRY',
+  fixSymbolID: '1002'
+}, {
+  symbol: 'EUR/TRY',
+  fixSymbolID: '1007'
+}, {
+  symbol: 'SEK/JPY',
+  fixSymbolID: '1013'
+}, {
+  symbol: 'NOK/SEK',
+  fixSymbolID: '1003'
+}, {
+  symbol: 'NOK/JPY',
+  fixSymbolID: '1012'
+}, {
+  symbol: 'GBP/NOK',
+  fixSymbolID: '37'
+}, {
+  symbol: 'SGD/JPY',
+  fixSymbolID: '1014'
+}, {
+  symbol: 'NZD/CHF',
+  fixSymbolID: '39'
+}, {
+  symbol: 'EUR/SGD',
+  fixSymbolID: '1008'
+}]
+
+module.exports = forexSymbols
