@@ -1,3 +1,3 @@
-const FixClient = require('./FixClient')
+const FIXClient = require('./FIXClient')
 
-module.exports = FixClient
+module.exports = FIXClient

@@ -21,7 +21,6 @@ class FIXParserBase {
 
     processMessage() {
         const matches = RE_FIND.exec(this.messageString);
-        console.log(`----- MATCHES = ${matches}`);
         if (matches && matches.length === 2) {
             const stringData = this.messageString.replace(
                 new RegExp(matches[1].replace(RE_ESCAPE, '\\$&'), 'g'),
@@ -63,7 +62,6 @@ class FIXParserBase {
     }
 
     parse(data) {
-        console.log(`PARSING DATA = ${JSON.stringify(data)}`);
         let i = 0;
 
         const messageStrings = data ? data.split(this.reBeginString) : [];

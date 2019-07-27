@@ -2,7 +2,7 @@ const { EventEmitter } = require('events')
 
 const Messages = require('../constants/ConstantsMessage')
 const Fields = require('../constants/ConstantsField')
-const Field = require('./../fields/Field')
+const Field = require('../fields/Field')
 
 class FIXParserClientBase extends EventEmitter {
     constructor(eventEmitter, parser) {
@@ -20,7 +20,6 @@ class FIXParserClientBase extends EventEmitter {
     }
 
     stopHeartbeat() {
-        console.log('stopHeartbeat Called');
         clearInterval(this.heartBeatIntervalId);
     }
 
@@ -54,9 +53,9 @@ class FIXParserClientBase extends EventEmitter {
                 this.fixParser.setNextTargetMsgSeqNum(newSeqNo);
             }
         }
-        console.log(
-            `[${Date.now()}] FIXClient received message ${message.description}`
-        );
+        // console.log(
+        //     `[${Date.now()}] FIXClient received message ${message.description}`
+        // );
     }
 }
 
