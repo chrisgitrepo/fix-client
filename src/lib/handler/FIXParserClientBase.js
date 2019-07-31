@@ -36,7 +36,7 @@ class FIXParserClientBase extends EventEmitter {
                     new Field(Fields.SendingTime, this.fixParser.getTimestamp()),
                     new Field(Fields.TargetCompID, this.target)
                     );
-            console.log('Sending new Heartbeat...');
+            console.log('[Heartbeat] ', new Date());
             this.send(heartBeat);
         }
         this.heartBeatIntervalId = setInterval(sendHeartbeat, this.heartBeatInterval);
