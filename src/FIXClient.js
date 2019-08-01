@@ -195,6 +195,38 @@ class FIXClient {
     return clientID
   }
 
+  sendLimitOrder({ securityObj, executionReport, currentFIXPosition, price }) {
+    const { symbol, fixSymbolID } = securityObj
+
+    const {
+      side,
+      orderQty,
+      leavesQty,
+      posMaintRptID
+    } = FIXClient.newOrderValues({ executionReport, currentFIXPosition })
+
+    const invertedSide = side === Side.Buy ? Side.Sell : Side.Buy
+    const sideToExecute = leavesQty === '0' ? invertedSide : side
+    const clientID = this.uniqueClientID({
+      symbol,
+      direction: configUtils.getDirectionfromFixId(sideToExecute)
+    })
+
+    const order = this.parser.createMessage(
+      ...this.standardHeader(Messages.NewOrderSingle),
+      new Field(Fields.ClOrdID, clientID),
+      new Field(Fields.Symbol, fixSymbolID),
+      new Field(Fields.Side, sideToExecute),
+      new Field(Fields.TransactTime, this.parser.getTimestamp()),
+      new Field(Fields.OrderQty, orderQty),
+      new Field(Fields.OrdType, OrderTypes.Limit),
+      new Field(Fields.PosMaintRptID, posMaintRptID),
+      new Field(Fields.Price, price),
+    );
+    this.parser.send(order);
+    return clientID
+  }
+
   requestForPositions() {
     const clientID = this.uniqueClientID()
     const order = this.parser.createMessage(
