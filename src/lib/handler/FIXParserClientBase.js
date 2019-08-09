@@ -1,3 +1,4 @@
+const os = require('os-utils');
 const { EventEmitter } = require('events')
 
 const Messages = require('../constants/ConstantsMessage')
@@ -36,7 +37,7 @@ class FIXParserClientBase extends EventEmitter {
                     new Field(Fields.SendingTime, this.fixParser.getTimestamp()),
                     new Field(Fields.TargetCompID, this.target)
                     );
-            console.log('[Heartbeat] ', new Date());
+            os.cpuUsage(v => console.log(`[Heartbeat] ${new Date()}  CPU Usage (%): ${parseFloat(v).toFixed(1)}`))
             this.send(heartBeat);
         }
         this.heartBeatIntervalId = setInterval(sendHeartbeat, this.heartBeatInterval);
