@@ -1,6 +1,6 @@
 {
   "name": "fix-client",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A minimalist FIX API client",
   "main": "./src/index.js",
   "files": [
@@ -26,7 +26,9 @@
     "url": "https://github.com/chrisgitrepo/fix-client/issues"
   },
   "homepage": "https://github.com/chrisgitrepo/fix-client#readme",
-  "dependencies": {},
+  "dependencies": {
+    "os-utils": "0.0.14"
+  },
   "devDependencies": {
     "dotenv": "^8.0.0",
     "jest": "^24.8.0"
