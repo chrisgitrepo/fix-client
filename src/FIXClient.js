@@ -102,7 +102,7 @@ class FIXClient {
   uniqueClientID(symbolDirection) {
     return symbolDirection
       ? `${symbolDirection.symbol}-${symbolDirection.direction}-${this.parser.getTimestamp()}`
-      : `emsstrad-client-id-${this.parser.getTimestamp()}`
+      : `client-id-${this.parser.getTimestamp()}`
   }
 
   standardHeader(msgType) {
@@ -270,12 +270,13 @@ class FIXClient {
     return clientID
   }
 
-  marketDataRequest(fixSymbolID) {
+  marketDataRequest({ fixSymbolID, type }) {
+    const reqType = type === 'START' ? '1' : '2'
     const clientID = this.uniqueClientID()
     const order = this.parser.createMessage(
       ...this.standardHeader(Messages.MarketDataRequest),
       new Field(Fields.MDReqID, clientID),
-      new Field(Fields.SubscriptionRequestType, '1'),
+      new Field(Fields.SubscriptionRequestType, reqType),
       new Field(Fields.MarketDepth, '0'),
       new Field(Fields.NoMDEntryTypes, '2'),
       new Field(Fields.MDEntryType, '0'),
