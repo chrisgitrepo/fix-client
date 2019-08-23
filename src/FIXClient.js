@@ -9,6 +9,9 @@ const {
   EncryptMethod
 } = require('./lib/FIXParser');
 
+const invertedConstantsFields =
+  Object.entries(Fields).reduce((acc, [name, number]) => ({ ...acc, [number]: name }), {})
+
 class FIXClient {
   constructor({
     fixVersion,
@@ -28,21 +31,21 @@ class FIXClient {
     this.parser = new FIXParser()
   }
 
+  static firstCharLowercase(string) {
+    return string[0].toLowerCase() + string.slice(1)
+  }
+
   static generateResponseObj(message) {
-    const invertedConstantsFields =
-      Object.entries(Fields).reduce((acc, [name, number]) => ({ ...acc, [number]: name }), {})
-
-    const responseObj = message.string.split('\x01').reduce((acc, curr) => {
-      const splitField = curr.split('=')
-      const firstCharLowercase = string => string && string[0].toLowerCase() + string.slice(1)
-      const key = firstCharLowercase(invertedConstantsFields[splitField[0]])
-      const value = splitField[1]
-
-      if (!key) return acc
-
-      return { ...acc, [key]: value }
+    const responseObj = message.data.reduce((acc, curr) => {
+      const key = FIXClient.firstCharLowercase(invertedConstantsFields[curr.tag])
+      return key ? { ...acc, [key]: curr.value } : acc
     }, {})
     return responseObj
+  }
+
+  static getSendingTime(message) {
+    const { value: sendingTime } = message.data.find(({ tag }) => tag === 52)
+    return sendingTime
   }
 
   static processSecurityListRequest(message) {
@@ -102,7 +105,7 @@ class FIXClient {
   uniqueClientID(symbolDirection) {
     return symbolDirection
       ? `${symbolDirection.symbol}-${symbolDirection.direction}-${this.parser.getTimestamp()}`
-      : `client-id-${this.parser.getTimestamp()}`
+      : `emsstrad-client-id-${this.parser.getTimestamp()}`
   }
 
   standardHeader(msgType) {
