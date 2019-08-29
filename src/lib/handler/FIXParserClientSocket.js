@@ -64,10 +64,7 @@ class FIXParserClientSocket extends FIXParserClientBase {
         );
       }
     } else {
-      console.error(
-        'FIXParserClientSocket: could not send message, socket not open',
-        message
-      );
+      throw new Error(`FIXParserClientSocket: could not send message, socket not open ${message}`)
     }
   }
 }
