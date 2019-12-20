@@ -37,7 +37,7 @@ class FIXParserClientBase extends EventEmitter {
                     new Field(Fields.SendingTime, this.fixParser.getTimestamp()),
                     new Field(Fields.TargetCompID, this.target)
                     );
-            os.cpuUsage(v => console.log(`[Heartbeat] ${new Date()}  CPU Usage (%): ${parseFloat(v).toFixed(1)}`))
+            // os.cpuUsage(v => console.log(`[Heartbeat] ${new Date()}  CPU Usage (%): ${parseFloat(v).toFixed(1)}`))
             this.send(heartBeat);
         }
         this.heartBeatIntervalId = setInterval(sendHeartbeat, this.heartBeatInterval);
