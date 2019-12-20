@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "test": "jest --setupFiles dotenv/config",
-    "publish": "npm version release && npm publish --tag next"
+    "publish:minor": "npm version minor && npm publish"
   },
   "repository": {
     "type": "git",
