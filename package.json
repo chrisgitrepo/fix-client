@@ -1,6 +1,6 @@
 {
   "name": "fix-client",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A minimalist FIX API client",
   "main": "./src/index.js",
   "files": [
