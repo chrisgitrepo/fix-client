@@ -105,7 +105,7 @@ class FIXClient {
   uniqueClientID(symbolDirection) {
     return symbolDirection
       ? `${symbolDirection.symbol}-${symbolDirection.direction}-${this.parser.getTimestamp()}`
-      : `emsstrad-client-id-${this.parser.getTimestamp()}`
+      : `client-id-${this.parser.getTimestamp()}`
   }
 
   standardHeader(msgType) {
