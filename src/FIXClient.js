@@ -32,7 +32,7 @@ class FIXClient {
   }
 
   static firstCharLowercase(string) {
-    return string[0].toLowerCase() + string.slice(1)
+    return string && string[0].toLowerCase() + string.slice(1)
   }
 
   static generateResponseObj(message) {
