@@ -27,11 +27,8 @@
     "url": "https://github.com/chrisgitrepo/fix-client/issues"
   },
   "homepage": "https://github.com/chrisgitrepo/fix-client#readme",
-  "dependencies": {
-    "os-utils": "0.0.14"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "dotenv": "^8.0.0",
     "jest": "^24.8.0"
   }
 }
