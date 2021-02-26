@@ -38,7 +38,10 @@ class FIXClient {
   static generateResponseObj(message) {
     const responseObj = message.data.reduce((acc, curr) => {
       const key = FIXClient.firstCharLowercase(invertedConstantsFields[curr.tag])
-      return key ? { ...acc, [key]: curr.value } : acc
+      return key ? {
+        ...acc,
+        [acc[key] ? `${key}_2` : key]: curr.value
+      } : acc
     }, {})
     return responseObj
   }
