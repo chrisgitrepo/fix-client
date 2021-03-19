@@ -183,7 +183,7 @@ class FIXClient {
     const sideToExecute = leavesQty === '0' ? invertedSide : side
     const clientID = this.uniqueClientID({
       symbol,
-      direction: configUtils.getDirectionfromFixId(sideToExecute)
+      direction: configUtils.getDirectionfromFixId(sideToExecute, 'stop')
     })
 
     const order = this.parser.createMessage(
@@ -215,7 +215,7 @@ class FIXClient {
     const sideToExecute = leavesQty === '0' ? invertedSide : side
     const clientID = this.uniqueClientID({
       symbol,
-      direction: configUtils.getDirectionfromFixId(sideToExecute)
+      direction: configUtils.getDirectionfromFixId(sideToExecute, 'limit')
     })
 
     const order = this.parser.createMessage(

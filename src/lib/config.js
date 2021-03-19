@@ -7,8 +7,8 @@ const fixSides = {
   '2': 'SELL',
 }
 
-const getDirectionfromFixId = (fixSideID) =>
-  fixSideID === 'BUY' || fixSideID === 'SELL' ? fixSideID : fixSides[fixSideID]
+const getDirectionfromFixId = (fixSideID, type) =>
+  fixSideID === 'BUY' || fixSideID === 'SELL' ? `${fixSideID}-${type}` : `${fixSides[fixSideID]}-${type}`
 
 const getFixIdFromDirection = (direction) =>
   direction === '1' || direction === '2' ? direction : directions[direction]
