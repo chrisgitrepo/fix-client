@@ -283,7 +283,7 @@ class FIXClient {
       ...this.standardHeader(Messages.MarketDataRequest),
       new Field(Fields.MDReqID, clientID),
       new Field(Fields.SubscriptionRequestType, reqType),
-      new Field(Fields.MarketDepth, '0'),
+      new Field(Fields.MarketDepth, '1'),
       new Field(Fields.NoMDEntryTypes, '2'),
       new Field(Fields.MDEntryType, '0'),
       new Field(Fields.MDEntryType, '1'),
