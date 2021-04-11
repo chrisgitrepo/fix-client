@@ -46,6 +46,18 @@ class FIXClient {
     return responseObj
   }
 
+  static  generateResponseObjSymbolPrice(message) {
+    const [symbolObj, priceObj1, priceObj2] = message.data.filter(({ tag }) => tag === 55 || tag === 270)
+
+    const responseObj = {
+      bidPx: priceObj1 && priceObj1.value,
+      offerPx: priceObj2 && priceObj2.value,
+      fixSymbolID: symbolObj && symbolObj.value
+    }
+
+    return responseObj
+  }
+
   static getSendingTime(message) {
     const { value: sendingTime } = message.data.find(({ tag }) => tag === 52)
     return sendingTime
