@@ -157,7 +157,7 @@ class FIXClient {
     this.parser.send(logout);
   }
 
-  sendNewOrder({ securityObj, orderQty, direction, posMaintRptID }) {
+  sendNewOrder({ id, securityObj, orderQty, direction, posMaintRptID }) {
     const { symbol, fixSymbolID } = securityObj
     if (FIXClient.isNotBuyOrSell(direction)) {
       console.error(`Direction not valid for ${symbol}, Trade Rejected`)
@@ -173,6 +173,7 @@ class FIXClient {
       new Field(Fields.TransactTime, this.parser.getTimestamp()),
       new Field(Fields.OrderQty, orderQty),
       new Field(Fields.OrdType, OrderTypes.Market),
+      new Field(Fields.Designation, id),
     ]
     if (posMaintRptID) {
       newOrderFields.push(new Field(Fields.PosMaintRptID, posMaintRptID))
