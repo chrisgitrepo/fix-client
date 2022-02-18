@@ -165,6 +165,8 @@ class FIXClient {
     }
     const clientID = this.uniqueClientID({ symbol, direction })
 
+    const designation = label ? [new Field(Fields.Designation, label)] : []
+
     const newOrderFields = [
       ...this.standardHeader(Messages.NewOrderSingle),
       new Field(Fields.ClOrdID, clientID),
@@ -173,7 +175,7 @@ class FIXClient {
       new Field(Fields.TransactTime, this.parser.getTimestamp()),
       new Field(Fields.OrderQty, orderQty),
       new Field(Fields.OrdType, OrderTypes.Market),
-      new Field(Fields.Designation, label),
+      ...designation,
     ]
     if (posMaintRptID) {
       newOrderFields.push(new Field(Fields.PosMaintRptID, posMaintRptID))
@@ -183,7 +185,7 @@ class FIXClient {
     return clientID
   }
 
-  sendStopOrder({ securityObj, executionReport, currentFIXPosition, stopPx }) {
+  sendStopOrder({ label, securityObj, executionReport, currentFIXPosition, stopPx }) {
     const { symbol, fixSymbolID } = securityObj
 
     const {
@@ -200,6 +202,8 @@ class FIXClient {
       direction: configUtils.getDirectionfromFixId(sideToExecute, 'stop')
     })
 
+    const designation = label ? [new Field(Fields.Designation, label)] : []
+
     const order = this.parser.createMessage(
       ...this.standardHeader(Messages.NewOrderSingle),
       new Field(Fields.ClOrdID, clientID),
@@ -210,12 +214,13 @@ class FIXClient {
       new Field(Fields.OrdType, OrderTypes.Stop),
       new Field(Fields.PosMaintRptID, posMaintRptID),
       new Field(Fields.StopPx, stopPx),
+      ...designation
     );
     this.parser.send(order);
     return clientID
   }
 
-  sendLimitOrder({ securityObj, executionReport, currentFIXPosition, price }) {
+  sendLimitOrder({ label, securityObj, executionReport, currentFIXPosition, price }) {
     const { symbol, fixSymbolID } = securityObj
 
     const {
@@ -232,6 +237,8 @@ class FIXClient {
       direction: configUtils.getDirectionfromFixId(sideToExecute, 'limit')
     })
 
+    const designation = label ? [new Field(Fields.Designation, label)] : []
+
     const order = this.parser.createMessage(
       ...this.standardHeader(Messages.NewOrderSingle),
       new Field(Fields.ClOrdID, clientID),
@@ -242,6 +249,7 @@ class FIXClient {
       new Field(Fields.OrdType, OrderTypes.Limit),
       new Field(Fields.PosMaintRptID, posMaintRptID),
       new Field(Fields.Price, price),
+      ...designation
     );
     this.parser.send(order);
     return clientID
