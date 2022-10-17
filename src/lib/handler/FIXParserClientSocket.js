@@ -22,13 +22,11 @@ class FIXParserClientSocket extends FIXParserClientBase {
     });
 
     this.socket.on('error', (error) => {
-      console.log('Error: ', error);
       this.eventEmitter.emit('error', error);
       this.stopHeartbeat();
     });
 
     this.socket.on('timeout', () => {
-      console.log('Timed Out');
       this.eventEmitter.emit('timeout');
       this.socket.end();
       this.stopHeartbeat();
